@@ -1,6 +1,6 @@
 {
   "name": "black-dashboard-react",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "private": true,
   "dependencies": {
     "@types/react": "16.9.23",

@@ -1,0 +1,10 @@
+{
+  "envs": [
+    {
+      "example": "123"
+    }
+  ],
+  "node_version": "12.13.1",
+  "output_dir": "build/",
+  "build": "npm run build"
+}

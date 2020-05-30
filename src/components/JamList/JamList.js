@@ -48,6 +48,8 @@ export default JamList;
 const JamTableRow = ({ stack, updateStacks }) => {
   const [loading, setLoading] = React.useState(false);
 
+  if (!stack.id || !stack.CDN || !stack.CDN.domain) return null;
+
   return (
     <tr>
       <td>{stack.id}</td>
@@ -60,8 +62,8 @@ const JamTableRow = ({ stack, updateStacks }) => {
         </a>
       </td>
       <td>
-        <a target="_blank" href={`https://${stack.CDN.domain}/index.html`}>
-          {stack.CDN.domain}
+        <a target="_blank" href={`https://${stack.CDN.subdomain}.stackers.io`}>
+          {`${stack.CDN.subdomain}.stackers.io`}
         </a>
       </td>
       <td>

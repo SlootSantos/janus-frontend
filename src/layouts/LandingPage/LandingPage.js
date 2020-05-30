@@ -146,8 +146,7 @@ const LandingPage = () => {
                   <span className="text-primary">CDN</span>
                 </li>
                 <li>
-                  <span className="text-primary">Cloudfront</span> as high
-                  availability CDN
+                  <span className="text-primary">HTTPS</span> by default
                 </li>
               </ul>
             </CardBody>

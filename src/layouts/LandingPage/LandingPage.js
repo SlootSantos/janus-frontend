@@ -18,6 +18,7 @@ import { chartExample1, chartExample3 } from "variables/charts.js";
 import logo from "assets/img/janus_white.png";
 
 const LandingPage = () => {
+  throw new Error("bye");
   return (
     <div
       style={{

@@ -8,6 +8,8 @@ import { StackProvider } from "./context/Stack.js";
 
 import AdminLayout from "layouts/Admin/Admin.js";
 import LandingPage from "layouts/LandingPage/LandingPage.js";
+import Payment from "layouts/Payment/Payment.js";
+import Terminal from "components/Terminal/Terminal.js";
 import Login from "components/Login/Login.js";
 
 import "assets/scss/black-dashboard-react.scss";
@@ -23,6 +25,11 @@ const App = () => {
   return (
     <Router history={hist}>
       <Switch>
+        <Route path="/pro" render={(props) => <Payment {...props} />} />
+        <Route
+          path="/build/:buildId"
+          render={(props) => <Terminal {...props} />}
+        />
         <Route path="/login" render={(props) => <Login {...props} />} />
         <Route
           path="/admin"

@@ -40,7 +40,7 @@ const LandingPage = () => {
       <Row style={{ marginBottom: 50 }}>
         <Col lg="12">
           <div style={{ textAlign: "center" }}>
-            <h1>Janus</h1>
+            <h1>Stackers.io</h1>
             <h5>Zero Config JAM-Stack Deployment</h5>
             <h2>Never worry about your Frontend deployments ever again</h2>
           </div>

@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import { Table, Button } from "reactstrap";
-
+import { Link } from "react-router-dom";
 import { StackContext } from "../../context/Stack";
 
 const deleteStack = async (id, cb) => {
@@ -31,6 +31,7 @@ const JamList = () => {
           <th>ID</th>
           <th>Git Repository</th>
           <th>Domain</th>
+          <th>Last Build</th>
           <th>Destroy</th>
         </tr>
       </thead>
@@ -65,6 +66,11 @@ const JamTableRow = ({ stack, updateStacks }) => {
         <a target="_blank" href={`https://${stack.CDN.subdomain}.stackers.io`}>
           {`${stack.CDN.subdomain}.stackers.io`}
         </a>
+      </td>
+      <td>
+        {stack.Build && stack.Build.latest && (
+          <Link to={`/build/${stack.Build.latest}`}>{stack.Build.latest}</Link>
+        )}
       </td>
       <td>
         <Button

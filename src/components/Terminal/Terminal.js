@@ -8,7 +8,9 @@ class Term extends React.PureComponent {
 
   componentDidMount() {
     let eventSource = new EventSource(
-      "http://localhost:8888/sse/build?id=" + this.props.match.params.buildId
+      process.env.REACT_APP_API_BASE_URL +
+        "/sse/build?id=" +
+        this.props.match.params.buildId
     );
     eventSource.onmessage = (e) => {
       console.log("DATA FROM EFFECT??", this.state);

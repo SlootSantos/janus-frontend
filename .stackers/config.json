@@ -6,7 +6,7 @@
   ],
   "node_version": "13.12.0",
   "output_dir": "build/",
-  "build": "npm run build",
+  "build": "npm rebuild node-sass && npm run build",
    "branches": {
     "prod_env": "master:tag",
     "stage_env": "master",

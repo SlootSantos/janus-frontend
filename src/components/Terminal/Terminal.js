@@ -20,7 +20,7 @@ class Term extends React.PureComponent {
     };
 
     eventSource.onerror = (e) => {
-      if (e.eventPhase == EventSource.CLOSED) {
+      if (e.eventPhase === EventSource.CLOSED) {
         console.log("close??", e);
         eventSource.close();
       }

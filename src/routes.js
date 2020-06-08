@@ -16,11 +16,11 @@
 
 */
 import Dashboard from "views/Dashboard.js";
-import Icons from "views/Icons.js";
-import Notifications from "views/Notifications.js";
-import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
-import UserProfile from "views/UserProfile.js";
+// import Icons from "views/Icons.js";
+// import Notifications from "views/Notifications.js";
+// import TableList from "views/TableList.js";
+// import UserProfile from "views/UserProfile.js";
 
 var routes = [
   {

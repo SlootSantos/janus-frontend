@@ -25,7 +25,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 
 import routes from "routes.js";
 
-import logo from "assets/img/janus.png";
+import logo from "assets/img/stacker_icon.png";
 
 var ps;
 
@@ -113,8 +113,8 @@ class Admin extends React.Component {
             routes={routes}
             bgColor={this.state.backgroundColor}
             logo={{
-              outterLink: "https://www.creative-tim.com/",
-              text: "Janus",
+              outterLink: "/",
+              text: "Stackers.io",
               imgSrc: logo,
             }}
             toggleSidebar={this.toggleSidebar}

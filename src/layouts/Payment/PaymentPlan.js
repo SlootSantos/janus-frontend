@@ -1,18 +1,9 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
-  Row,
-  Col,
-  Button,
-} from "reactstrap";
+import { Card, CardHeader, CardBody, CardTitle, Col, Button } from "reactstrap";
 
 export default (props) => {
-  const { title, slogan, bullets, price, duration, href, ctaText } = props;
+  const { title, slogan, price, duration, onClick, ctaText } = props;
 
   return (
     <Col lg={{ size: 3 }}>
@@ -22,16 +13,7 @@ export default (props) => {
           <CardTitle tag="h2">{title}</CardTitle>
         </CardHeader>
         <CardBody>
-          <ul>
-            {bullets.map(
-              (Bullet) =>
-                Bullet && (
-                  <li>
-                    <Bullet />
-                  </li>
-                )
-            )}
-          </ul>
+          {props.children}
           <div style={{ width: "100%", textAlign: "center", marginTop: 40 }}>
             <span className="text-primary h3">{price}</span>
             {duration && <span className="text-primary h5"> {duration}</span>}
@@ -45,7 +27,7 @@ export default (props) => {
               justifyContent: "center",
             }}
           >
-            <Link to={{ pathname: "/login" }}>
+            <div onClick={onClick}>
               <Button
                 tag="label"
                 className="btn-fill"
@@ -58,7 +40,7 @@ export default (props) => {
                   {ctaText}
                 </span>
               </Button>
-            </Link>
+            </div>
           </div>
         </CardBody>
       </Card>

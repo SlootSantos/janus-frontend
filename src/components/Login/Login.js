@@ -37,7 +37,12 @@ const Login = (props) => {
                   alignItems: "center",
                 }}
               >
-                <img src={logo} height="120" style={{ marginBottom: 20 }} />
+                <img
+                  alt=""
+                  src={logo}
+                  height="120"
+                  style={{ marginBottom: 20 }}
+                />
                 <p className="text-primary">
                   To use <b>Janus</b>, you have to login and authorize Github.
                   Janus will then fetch your repositories and install webhooks

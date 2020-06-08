@@ -57,13 +57,18 @@ const JamTableRow = ({ stack, updateStacks }) => {
       <td>
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href={"https://github.com/slootsantos/" + stack.Repo.name}
         >
           {stack.Repo.name}
         </a>
       </td>
       <td>
-        <a target="_blank" href={`https://${stack.CDN.subdomain}.stackers.io`}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://${stack.CDN.subdomain}.stackers.io`}
+        >
           {`${stack.CDN.subdomain}.stackers.io`}
         </a>
       </td>

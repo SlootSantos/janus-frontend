@@ -33,7 +33,7 @@ const LandingPage = () => {
       <Row>
         <div style={{ marginLeft: 15, marginTop: 15 }}>
           <Link to={{ pathname: "/" }}>
-            <img src={logo} height="60" style={{ marginBottom: 20 }} />
+            <img alt="" src={logo} height="60" style={{ marginBottom: 20 }} />
           </Link>
         </div>
       </Row>

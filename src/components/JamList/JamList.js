@@ -5,12 +5,18 @@ import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { StackContext } from "../../context/Stack";
 
-const deleteStack = async (id, cb) => {
+import hdd from "assets/img/hdd_white.png";
+
+const deleteStack = async (stack, cb) => {
   try {
     const { data } = await axios.delete(
-      process.env.REACT_APP_API_BASE_URL + "/jam?id=" + id,
+      process.env.REACT_APP_API_BASE_URL + "/jam",
       {
         withCredentials: true,
+        data: {
+          ID: stack.id,
+          IsThirdParty: stack.isThirdParty,
+        },
       }
     );
 
@@ -53,7 +59,12 @@ const JamTableRow = ({ stack, updateStacks }) => {
 
   return (
     <tr>
-      <td>{stack.id}</td>
+      <td>
+        {stack.isThirdParty && (
+          <img src={hdd} height="20" style={{ marginRight: 5 }} />
+        )}
+        {stack.id}
+      </td>
       <td>
         <a
           target="_blank"
@@ -64,13 +75,23 @@ const JamTableRow = ({ stack, updateStacks }) => {
         </a>
       </td>
       <td>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`https://${stack.CDN.subdomain}.stackers.io`}
-        >
-          {`${stack.CDN.subdomain}.stackers.io`}
-        </a>
+        {stack.CDN.customdomain ? (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://${stack.CDN.customdomain}`}
+          >
+            {`${stack.CDN.customdomain}`}
+          </a>
+        ) : (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://${stack.CDN.subdomain}.stackers.io`}
+          >
+            {`${stack.CDN.subdomain}.stackers.io`}
+          </a>
+        )}
       </td>
       <td>
         {stack.Build && stack.Build.latest && (
@@ -83,7 +104,7 @@ const JamTableRow = ({ stack, updateStacks }) => {
           size="sm"
           onClick={() => {
             setLoading(true);
-            deleteStack(stack.id, updateStacks);
+            deleteStack(stack, updateStacks);
           }}
         >
           {loading ? (

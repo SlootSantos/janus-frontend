@@ -16,6 +16,7 @@ const deleteStack = async (stack, cb) => {
         data: {
           ID: stack.id,
           IsThirdParty: stack.isThirdParty,
+          Repository: stack.Repo,
         },
       }
     );
@@ -69,7 +70,7 @@ const JamTableRow = ({ stack, updateStacks }) => {
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={"https://github.com/slootsantos/" + stack.Repo.name}
+          href={`https://github.com/${stack.Repo.owner}/${stack.Repo.name}`}
         >
           {stack.Repo.name}
         </a>

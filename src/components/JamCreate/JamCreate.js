@@ -10,18 +10,24 @@ import {
   Input,
   Row,
   Col,
-  Label,
 } from "reactstrap";
 
 import { StackContext } from "../../context/Stack";
 
-const createStack = async (repoName, customSubdomain, updateFn, cb) => {
+const createStack = async (
+  repoName,
+  customSubdomain,
+  isThirdParty,
+  updateFn,
+  cb
+) => {
   try {
     const { data } = await axios.post(
       process.env.REACT_APP_API_BASE_URL + "/jam",
       {
         Repository: repoName,
         CustomSubdomain: customSubdomain,
+        IsThirdParty: isThirdParty,
       },
       {
         withCredentials: true,
@@ -40,6 +46,7 @@ const JamCreate = (props) => {
   const [loading, setLoading] = React.useState(false);
   const [selectedRepo, setSelectedRepo] = React.useState("");
   const [customSubdomain, setCustomSubDomain] = React.useState("");
+  const [isThirdParty, setIsThirdParty] = React.useState(false);
 
   React.useEffect(() => {
     (async () => {
@@ -76,15 +83,17 @@ const JamCreate = (props) => {
               type="select"
               name="select"
               id="exampleSelect"
-              onChange={(e) => setSelectedRepo(e.target.value)}
-              // onKeyDown={() =>
-              //   createStack(selectedRepo, setStacks, props.onClose)
-              // }
+              onChange={(e) => {
+                const repo = repos.find(
+                  ({ name, owner }) => `${owner}/${name}` === e.target.value
+                );
+                setSelectedRepo(repo);
+              }}
             >
               <option>Select Repository</option>
               {repos.map((r, idx) => (
-                <option value={r} key={idx}>
-                  {r}
+                <option value={`${r.owner}/${r.name}`} key={idx}>
+                  {r.name}
                 </option>
               ))}
             </Input>
@@ -120,12 +129,9 @@ const JamCreate = (props) => {
                 type="select"
                 name="select"
                 id="exampleSelect"
-                onChange={(e) => setSelectedRepo(e.target.value)}
-                // onKeyDown={() =>
-                //   createStack(selectedRepo, setStacks, props.onClose)
-                // }
+                onChange={(e) => setIsThirdParty(JSON.parse(e.target.value))}
               >
-                <option>Use Stackers.io Infrastructre</option>
+                <option value={false}>Use Stackers.io Infrastructre</option>
                 <option value={true}>Use my own AWS infrastructre</option>
               </Input>
             </div>
@@ -150,6 +156,7 @@ const JamCreate = (props) => {
                     createStack(
                       selectedRepo,
                       customSubdomain,
+                      isThirdParty,
                       setStacks,
                       props.onClose
                     );

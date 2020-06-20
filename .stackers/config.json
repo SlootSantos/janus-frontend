@@ -10,7 +10,7 @@
   "build": "npm rebuild node-sass && npm run build",
   "branches": {
     "prod_env": "master:tag",
-    "stage_env": "master",
-    "dev_env": "develop"
+    "stage_env": "develop",
+    "dev_env": "master"
   }
 }

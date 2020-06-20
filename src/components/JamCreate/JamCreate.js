@@ -101,15 +101,25 @@ const JamCreate = (props) => {
               <p className="text-primary">
                 <u>Subdomain</u> <small>*optional</small>
               </p>
-              <small className="text-primary">
-                If you don't choose a subdomain, Stackers will assign a random
-                hash as subdomain.
-              </small>
+              {!customSubdomain ? (
+                <small className="text-primary">
+                  If you don't choose a subdomain, Stackers will assign a random
+                  hash as subdomain.
+                </small>
+              ) : (
+                <>
+                  <small className="text-primary">Your domain will be:</small>
+                  <small> https://{customSubdomain}.stackers.io</small>
+                </>
+              )}
+
               <Input
                 type="text"
                 name="customSubDomain"
                 id="customSubDomain"
-                onChange={(e) => setCustomSubDomain(e.target.value)}
+                onChange={(e) =>
+                  setCustomSubDomain(e.target.value.split(/\.|\_/)[0])
+                }
                 value={customSubdomain}
                 placeholder="myexample"
               />
@@ -132,7 +142,7 @@ const JamCreate = (props) => {
                 onChange={(e) => setIsThirdParty(JSON.parse(e.target.value))}
               >
                 <option value={false}>Use Stackers.io Infrastructre</option>
-                <option value={true}>Use my own AWS infrastructre</option>
+                {/* <option value={true}>Use my own AWS infrastructre</option> */}
               </Input>
             </div>
             <div className="float-left" style={{ marginTop: "15px" }}>

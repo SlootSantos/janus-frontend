@@ -8,6 +8,11 @@ import {
   Row,
   Col,
   Button,
+  Navbar,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink
 } from "reactstrap";
 
 // react plugin used to create charts
@@ -15,7 +20,7 @@ import { Line, Bar } from "react-chartjs-2";
 
 // core components
 import { chartExample1, chartExample3 } from "variables/charts.js";
-import logo from "assets/img/janus_white.png";
+import logo from "assets/img/janus_white_small.png";
 
 const LandingPage = () => {
   return (
@@ -31,11 +36,25 @@ const LandingPage = () => {
       }}
     >
       <Row>
-        <div style={{ marginLeft: 15, marginTop: 15 }}>
+        <Navbar expand="md" style={{background: "transparent"}}>
+        <Collapse isOpen={true} navbar>
+        <div style={{ marginLeft: 15, marginTop: 15, minWidth: 60 }}>
           <Link to={{ pathname: "/" }}>
             <img alt="" src={logo} height="60" style={{ marginBottom: 20 }} />
-          </Link>
+          </Link>          
         </div>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink target="_blank" href="https://stackers.snazzydocs.com/docs/1.0/getting-started/whats-stackers-dot-io">Documentation</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/pro">Pricing</NavLink>
+            </NavItem>
+          </Nav>
+          
+        </Collapse>
+        </Navbar>
+        
       </Row>
       <Row style={{ marginBottom: 50 }}>
         <Col lg="12">

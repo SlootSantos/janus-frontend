@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Navbar, Collapse, Nav, NavItem, NavLink } from "reactstrap";
 
-import logo from "assets/img/janus_white.png";
+import logo from "assets/img/janus_white_small.png";
 import PaymentPlanFree from "./PaymentPlanFree";
 import PaymentPlanPro from "./PaymentPlanPro";
 import PaymentPlanEnterprise from "./PaymentPlanEnterprise";
@@ -20,11 +20,33 @@ export default (props) => {
       }}
     >
       <Row>
-        <div style={{ marginLeft: 15, marginTop: 15 }}>
-          <Link to={{ pathname: "/" }}>
-            <img alt="" src={logo} height="60" style={{ marginBottom: 20 }} />
-          </Link>
-        </div>
+        <Navbar expand="md" style={{ background: "transparent" }}>
+          <Collapse isOpen={true} navbar>
+            <div style={{ marginLeft: 15, marginTop: 15, minWidth: 60 }}>
+              <Link to={{ pathname: "/" }}>
+                <img
+                  alt=""
+                  src={logo}
+                  height="60"
+                  style={{ marginBottom: 20 }}
+                />
+              </Link>
+            </div>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavLink
+                  target="_blank"
+                  href="https://stackers.snazzydocs.com/docs/1.0/getting-started/whats-stackers-dot-io"
+                >
+                  Documentation
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/pro">Pricing</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
       </Row>
       <Row style={{ marginBottom: 50 }}>
         <Col lg="12">

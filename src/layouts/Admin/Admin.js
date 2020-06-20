@@ -22,6 +22,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 
 // core components
 import Sidebar from "components/Sidebar/Sidebar.js";
+import AdminNavbar from "components/Navbars/AdminNavbar.js";
 
 import routes from "routes.js";
 
@@ -124,12 +125,12 @@ class Admin extends React.Component {
             ref="mainPanel"
             data={this.state.backgroundColor}
           >
-            {/* <AdminNavbar
+            <AdminNavbar
               {...this.props}
               brandText={this.getBrandText(this.props.location.pathname)}
               toggleSidebar={this.toggleSidebar}
               sidebarOpened={this.state.sidebarOpened}
-            /> */}
+            />
             <Switch>
               {this.getRoutes(routes)}
               <Redirect from="*" to="/admin/dashboard" />

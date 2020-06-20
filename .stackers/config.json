@@ -6,8 +6,9 @@
   ],
   "node_version": "13.12.0",
   "output_dir": "build/",
+  "post_install": "[[ \"$STACKERS_BRANCH\" == \"master:tag\" ]] && mv .env.prod .env || mv .env.develop .env",
   "build": "npm rebuild node-sass && npm run build",
-   "branches": {
+  "branches": {
     "prod_env": "master:tag",
     "stage_env": "master",
     "dev_env": "develop"

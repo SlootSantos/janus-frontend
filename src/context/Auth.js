@@ -6,6 +6,7 @@ export const AuthContext = React.createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = React.useState(false);
+  const [user, setUser] = React.useState({});
   const [pending, setPending] = React.useState(true);
 
   React.useEffect(() => {
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }) => {
       );
 
       setAuthenticated(data.LoggedIn);
+      setUser(data.User);
       setPending(false);
     })();
   }, []);
@@ -44,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     );
 
   return (
-    <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
+    <AuthContext.Provider value={{ authenticated, setAuthenticated, user }}>
       {children}
     </AuthContext.Provider>
   );

@@ -48,7 +48,7 @@ const UserProfile = () => {
       <div className="content">
         <SettingsCard {...settings.user} isAdmin={true} />
         {settings.orgas.map((orga) => (
-          <SettingsCard {...orga} />
+          <SettingsCard key={orga.name} {...orga} />
         ))}
       </div>
     </>

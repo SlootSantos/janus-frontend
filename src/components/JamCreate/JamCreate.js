@@ -13,6 +13,8 @@ import {
 } from "reactstrap";
 
 import { StackContext } from "../../context/Stack";
+import { AuthContext } from "../../context/Auth";
+import { useReducer } from "react";
 
 const createStack = async (
   repoName,
@@ -41,6 +43,7 @@ const createStack = async (
 
 const JamCreate = (props) => {
   const { setStacks } = React.useContext(StackContext);
+  const { user } = React.useContext(AuthContext);
 
   const [repos, setRepos] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
@@ -142,7 +145,9 @@ const JamCreate = (props) => {
                 onChange={(e) => setIsThirdParty(JSON.parse(e.target.value))}
               >
                 <option value={false}>Use Stackers.io Infrastructre</option>
-                {/* <option value={true}>Use my own AWS infrastructre</option> */}
+                {!!user.ThirdPartyAWS && (
+                  <option value={true}>Use my own AWS infrastructre</option>
+                )}
               </Input>
             </div>
             <div className="float-left" style={{ marginTop: "15px" }}>
